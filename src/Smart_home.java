@@ -1,0 +1,532 @@
+import java.util.Scanner;
+import java.lang.*;
+
+public class Smart_home {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		String os = System.getProperty("os.name");
+        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+        Scanner in = new Scanner(System.in, consoleEncoding);
+		
+		double t, co2, hum;
+        int f_menu_rooms = 0, room, par, f_menu_par = 0, bright, speed, light, coffee, water;
+        Toilet toil = new Toilet();
+        Kitchen kitch = new Kitchen();
+        Bedroom bed = new Bedroom();
+        Bathroom bath = new Bathroom();
+        Wine_vault wine = new Wine_vault();
+        System.out.println("Система умного дома");
+        do
+        {
+        	System.out.println("Выберите комнату:\n"
+                + "1. Туалет\n"
+                + "2. Кухня\n"
+                + "3. Спальня\n"
+                + "4. Ванная\n"
+                + "5. Винный погреб\n"
+                + "Выбранная комната: ");
+            room = in.nextInt();
+            if (room == 1)
+                do
+                {
+                    toil.menu_toil();
+                    par = in.nextInt();
+                    if (par == 1)
+                    {
+                    	System.out.print("\nВведите желаемую температуру воздуха (в °С): ");
+                        t = in.nextDouble();
+                        toil.Set_air_temp_toil(t);
+                        System.out.println("Температура воздуха в туалете будет изменена до " + toil.Get_air_temp_toil() + " °С");
+                    }
+                    else
+                        if (par == 2)
+                    {
+                        System.out.print("\nВведите желаемую влажность воздуха (в %): ");
+                        hum = in.nextDouble();
+                        toil.Set_air_hum_toil(hum);
+                        System.out.println("Влажность воздуха в туалете будет изменена до " + toil.Get_air_hum_toil() + " %");
+                    }
+                    else
+                        if (par == 3)
+                    {
+                        System.out.print("\nВведите желаемую концентрацию CO2 (в %): ");
+                        co2 = in.nextDouble();
+                        toil.Set_conc_co2_toil(co2);
+                        System.out.println("Концентрация CO2 в туалете будет изменена до " + toil.Get_conc_co2_toil() + " %");
+                    }
+                    else
+                        if (par == 4)
+                    {
+                        System.out.print("\nВведите желаемую яркость света (в %): ");
+                        bright = in.nextInt();
+                        toil.Set_brightness_toil(bright);
+                        System.out.println("Яркость в туалете будет изменена до " + toil.Get_brightness_toil() + " %");
+                    }
+                    else
+                        if (par == 5)
+                    {
+                        	System.out.println("\nВключить (1) или выключить (0) свет?");
+                        light = in.nextInt();
+                        if (light == 1 && toil.Get_light_toil() != 1)
+                        {
+                            toil.Set_light_toil(light);
+                            System.out.println("Свет в туалете включен");
+                        }
+                        else
+                            if (light == 1)
+                        {
+                            	System.out.println("\nСвет уже включен. Выключить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                toil.Set_light_toil(light);
+                                System.out.println("Свет в туалете выключен");
+                            }
+                        }
+                        else
+                                if (toil.Get_light_toil() == 0)
+                        {
+                                	System.out.println("\nСвет уже выключен. Включить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                toil.Set_light_toil(light);
+                                System.out.println("Свет в туалете включен");
+                            }
+                        }
+                        else
+                        {
+                            toil.Set_light_toil(light);
+                            System.out.println("Свет в туалете выключен ");
+                        }
+                    }
+                    else
+                        if (par == 6)
+                    {
+                        System.out.print("\nВведите желаемую скорость вентиляции: ");
+                        speed = in.nextInt();
+                        toil.Set_vent_speed_toil(speed);
+                        System.out.println("Скорость вентиляции в туалете будет изменена до " + toil.Get_brightness_toil() + " %");
+                    }
+                    else
+                    {
+                    	System.out.println("\nВыберите пункт из предложенных!");
+                    }
+                    System.out.println("\nЖелаете выбрать еще один параметр? Да(1)/Нет(0)");
+                    f_menu_par = in.nextInt();
+                } while (f_menu_par == 1);
+            else
+                if (room == 2)
+                do
+                {
+                    kitch.menu_kitch();
+                    par = in.nextInt();
+                    if (par == 1)
+                    {
+                    	System.out.print("\nВведите желаемую температуру воздуха (в °С): ");
+                        t = in.nextDouble();;
+                        kitch.Set_air_temp_kitch(t);
+                        System.out.println("Температура воздуха на кухне будет изменена до " + kitch.Get_air_temp_kitch() + " °С");
+                    }
+                    else
+                        if (par == 2)
+                    {
+                        	System.out.print("\nВведите желаемую влажность воздуха (в %): ");
+                        hum = in.nextDouble();
+                        kitch.Set_air_hum_kitch(hum);
+                        System.out.println("Влажность воздуха на кухне будет изменена до " + kitch.Get_air_hum_kitch() + " %");
+                    }
+                    else
+                        if (par == 3)
+                    {
+                        	System.out.print("\nВведите желаемую концентрацию CO2 (в %): ");
+                        co2 = in.nextDouble();
+                        kitch.Set_conc_co2_kitch(co2);
+                        System.out.println("Концентрация CO2 на кухне будет изменена до " + kitch.Get_conc_co2_kitch() + " %");
+                    }
+                    else
+                        if (par == 4)
+                    {
+                        	System.out.print("\nВведите желаемую яркость света (в %): ");
+                        bright = in.nextInt();
+                        kitch.Set_brightness_kitch(bright);
+                        System.out.println("Яркость света на кухне будет изменена до " + kitch.Get_brightness_kitch() + " %");
+                    }
+                    else
+                        if (par == 5)
+                    {
+                        	System.out.println("Включить (1) или выключить (0) свет?");
+                        light = in.nextInt();
+                        if (light == 1 && kitch.Get_light_kitch() != 1)
+                        {
+                            kitch.Set_light_kitch(light);
+                            System.out.println("Свет на кухне включен");
+                        }
+                        else
+                            if (light == 1)
+                        {
+                            	System.out.println("Свет уже включен. Выключить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                kitch.Set_light_kitch(light);
+                                System.out.println("Свет на кухне выключен");
+                            }
+                        }
+                        else
+                            if (kitch.Get_light_kitch() == 0)
+                        {
+                            	System.out.println("Свет уже выключен. Включить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                kitch.Set_light_kitch(light);
+                                System.out.println("Свет на кухне включен");
+                            }
+                        }
+                        else
+                        {
+                            kitch.Set_light_kitch(light);
+                            System.out.println("Свет на кухне выключен");
+                        }
+                    }
+                    else
+                        if (par == 6)
+                    {
+                        	System.out.print("Введите желаемую скорость вентиляции: ");
+                        speed = in.nextInt();
+                        kitch.Set_vent_speed_kitch(speed);
+                        System.out.println("Скорость вентиляции на кухне будет изменена до " + kitch.Get_vent_speed_kitch() + " %");
+                    }
+                    else
+                        if (par == 7)
+                    {
+                        	System.out.println("Приготовить кофе? Да(1)/Нет(0)");
+                        coffee = in.nextInt();
+                        kitch.Set_coffee(coffee);
+                        kitch.coffee_machine();
+                    }
+                    else
+                    {
+                    	System.out.println("Выберите пункт из предложенных!");
+                    }
+                    System.out.println("Желаете выбрать еще один параметр? Да(1)/Нет(0)");
+                    f_menu_par = in.nextInt();
+                } while (f_menu_par == 1);
+            else
+                if (room == 3)
+                do
+                {
+                    bed.menu_bed();
+                    par = in.nextInt();
+                    if (par == 1)
+                    {
+                    	System.out.print("Введите желаемую температуру воздуха (в °С): ");
+                        t = in.nextDouble();
+                        bed.Set_air_temp_bed(t);
+                        System.out.println("Температура воздуха в спальне будет изменена до " + bed.Get_air_temp_bed() + " °С");
+                    }
+                    else
+                        if (par == 2)
+                    {
+                        	System.out.print("Введите желаемую влажность воздуха (в %): ");
+                        hum = in.nextDouble();
+                        bed.Set_air_hum_bed(hum);
+                        System.out.println("Влажность воздуха в спальне будет изменена до " + bed.Get_air_hum_bed() + " %");
+                    }
+                    else
+                        if (par == 3)
+                    {
+                        	System.out.print("Введите желаемую концентрацию CO2 (в %): ");
+                        co2 = in.nextDouble();
+                        bed.Set_conc_co2_bed(co2);
+                        System.out.println("Концентрация CO2 в спальне будет изменена до " + bed.Get_conc_co2_bed() + " %");
+                    }
+                    else
+                        if (par == 4)
+                    {
+                        	System.out.print("Введите желаемую яркость света (в %): ");
+                        bright = in.nextInt();
+                        bed.Set_brightness_bed(bright);
+                        System.out.println("Яркость света в спальне будет изменена до " + bed.Get_brightness_bed() + " %");
+                    }
+                    else
+                        if (par == 5)
+                    {
+                        	System.out.println("Включить (1) или выключить (0) свет?");
+                        light = in.nextInt();
+                        if (light == 1 && bed.Get_light_bed() != 1)
+                        {
+                            bed.Set_light_bed(light);
+                            System.out.println("Свет в спальне включен");
+                        }
+                        else
+                            if (light == 1)
+                        {
+                            	System.out.println("Свет уже включен. Выключить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                bed.Set_light_bed(light);
+                                System.out.println("Свет в спальне выключен");
+                            }
+                        }
+                        else
+                            if (bed.Get_light_bed() == 0)
+                        {
+                            	System.out.println("Свет уже выключен. Включить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                bed.Set_light_bed(light);
+                                System.out.println("Свет в спальне включен");
+                            }
+                        }
+                        else
+                        {
+                            bed.Set_light_bed(light);
+                            System.out.println("Свет в спальне выключен");
+                        }
+                    }
+                    else
+                        if (par == 6)
+                    {
+                        	System.out.print("Введите желаемую скорость вентиляции: ");
+                        speed = in.nextInt();
+                        bed.Set_vent_speed_bed(speed);
+                        System.out.println("Скорость вентиляции в спальне будет изменена до " + bed.Get_vent_speed_bed() + " %");
+                    }
+                    else
+                    {
+                    	System.out.println("Выберите пункт из предложенных!");
+                    }
+                    System.out.println("Желаете выбрать еще один параметр? Да(1)/Нет(0)");
+                    f_menu_par = in.nextInt();
+                } while (f_menu_par == 1);
+            else
+                if (room == 4)
+                do
+                {
+                    bath.menu_bath();
+                    par = in.nextInt();
+                    if (par == 1)
+                    {
+                    	System.out.print("Введите желаемую температуру воздуха (в °С): ");
+                        t = in.nextDouble();
+                        bath.Set_air_temp_bath(t);
+                        System.out.println("Температура воздуха в ванной будет изменена до " + bath.Get_air_temp_bath() + " °С");
+                    }
+                    else
+                        if (par == 2)
+                    {
+                        	System.out.print("Введите желаемую влажность воздуха (в %): ");
+                        hum = in.nextDouble();
+                        bath.Set_air_hum_bath(hum);
+                        System.out.println("Влажность воздуха в ванной будет изменена до " + bath.Get_air_hum_bath() + " %");
+                    }
+                    else
+                        if (par == 3)
+                    {
+                        	System.out.print("Введите желаемую концентрацию CO2 (в %): ");
+                        co2 = in.nextDouble();
+                        bath.Set_conc_co2_bath(co2);
+                        System.out.println("Концентрация CO2 в ванной будет изменена до " + bath.Get_conc_co2_bath() + " %");
+                    }
+                    else
+                        if (par == 4)
+                    {
+                        	System.out.print("Введите желаемую яркость света (в %): ");
+                        bright = in.nextInt();
+                        bath.Set_brightness_bath(bright);
+                        System.out.println("Яркость света в ванной будет изменена до " + bath.Get_brightness_bath() + " %");
+                    }
+                    else
+                        if (par == 5)
+                    {
+                        	System.out.println("Включить (1) или выключить (0) свет?");
+                        light = in.nextInt();
+                        if (light == 1 && bath.Get_light_bath() != 1)
+                        {
+                            bath.Set_light_bath(light);
+                            System.out.println("Свет в ванной включен");
+                        }
+                        else
+                            if (light == 1)
+                        {
+                            	System.out.println("Свет уже включен. Выключить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                bath.Set_light_bath(light);
+                                System.out.println("Свет в ванной выключен");
+                            }
+                        }
+                        else
+                            if (bath.Get_light_bath() == 0)
+                        {
+                            	System.out.println("Свет уже выключен. Включить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                bath.Set_light_bath(light);
+                                System.out.println("Свет в ванной включен");
+                            }
+                        }
+                        else
+                        {
+                            bath.Set_light_bath(light);
+                            System.out.println("Свет в ванной выключен");
+                        }
+                    }
+                    else
+                        if (par == 6)
+                    {
+                        	System.out.print("Введите желаемую скорость вентиляции: ");
+                        speed = in.nextInt();
+                        bath.Set_vent_speed_bath(speed);
+                        System.out.println("Скорость вентиляции в ванной будет изменена до " + bath.Get_vent_speed_bath() + " %");
+                    }
+                    else
+                        if (par == 7)
+                    {
+                        	System.out.println("Набрать воду в ванную? Да(1)/Нет(0)");
+                        water = in.nextInt();
+                        bath.Set_flag_water(water);
+                        bath.water_bath();
+                    }
+                    else
+                    {
+                    	System.out.println("Выберите пункт из предложенных!");
+                    }
+                    System.out.println("Желаете выбрать еще один параметр? Да(1)/Нет(0)");
+                    f_menu_par = in.nextInt();
+                } while (f_menu_par == 1);
+            else
+                if (room == 5)
+                do
+                {
+                    wine.menu_wine();
+                    par = in.nextInt();
+                    if (par == 1)
+                    {
+                    	System.out.print("Введите желаемую температуру воздуха (в °С): ");
+                        t = in.nextDouble();
+                        wine.Set_air_temp_wine(t);
+                        System.out.println("Температура воздуха в винном погребе будет изменена до " + wine.Get_air_temp_wine() + " °С");
+                    }
+                    else
+                        if (par == 2)
+                    {
+                        	System.out.print("Введите желаемую влажность воздуха (в %): ");
+                        hum = in.nextDouble();
+                        wine.Set_air_hum_wine(hum);
+                        System.out.println("Влажность воздуха в винном погребе будет изменена до " + wine.Get_air_hum_wine() + " %");
+                    }
+                    else
+                        if (par == 3)
+                    {
+                        	System.out.print("Введите желаемую концентрацию CO2 (в %): ");
+                        co2 = in.nextDouble();
+                        wine.Set_conc_co2_wine(co2);
+                        System.out.println("Концентрация CO2 в винном погребе будет изменена до " + wine.Get_conc_co2_wine() + " %");
+                    }
+                    else
+                        if (par == 4)
+                    {
+                        	System.out.print("Введите желаемую яркость света (в %): ");
+                        bright = in.nextInt();
+                        wine.Set_brightness_wine(bright);
+                        System.out.println("Яркость света в винном погребе будет изменена до " + wine.Get_brightness_wine() + " %");
+                    }
+                    else
+                        if (par == 5)
+                    {
+                        	System.out.println("Включить (1) или выключить (0) свет?");
+                        light = in.nextInt();
+                        if (light == 1 && wine.Get_light_wine() != 1)
+                        {
+                            wine.Set_light_wine(light);
+                            System.out.println("Свет в ванной включен");
+                        }
+                        else
+                            if (light == 1)
+                        {
+                            	System.out.println("Свет уже включен. Выключить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                wine.Set_light_wine(light);
+                                System.out.println("Свет в ванной выключен");
+                            }
+                        }
+                        else
+                            if (wine.Get_light_wine() == 0)
+                        {
+                            	System.out.println("Свет уже выключен. Включить свет? Да(1)/Нет(0)");
+                            light = in.nextInt();
+                            if (light == 1)
+                            {
+                                wine.Set_light_wine(light);
+                                System.out.println("Свет в ванной включен");
+                            }
+                        }
+                        else
+                        {
+                            wine.Set_light_wine(light);
+                            System.out.println("Свет в ванной выключен");
+                        }
+                    }
+                    else
+                        if (par == 6)
+                    {
+                        	System.out.print("Введите желаемую скорость вентиляции: ");
+                        speed = in.nextInt();
+                        wine.Set_vent_speed_wine(speed);
+                        System.out.println("Скорость вентиляции в винном погребе будет изменена до " + wine.Get_vent_speed_wine() + " %");
+                    }
+                    else
+                    {
+                    	System.out.println("Выберите пункт из предложенных!");
+                    }
+                    System.out.println("Желаете выбрать еще один параметр? Да(1)/Нет(0)");
+                    f_menu_par = in.nextInt();
+                } while (f_menu_par == 1);
+            else
+            {
+            	System.out.println("Выберите комнату из предложенных!");
+            }
+            System.out.println("Желаете выбрать другую комнату? Да(1)/Нет(0)");
+            f_menu_rooms = in.nextInt();
+            
+            System.out.println("\n6) Продемонстрировать работу с массивом объектов");
+    		System.out.println("===========================================================================================");
+    		System.out.println("На примере объектов класса Туалет");
+    		
+    		Toilet[] mas_toil = new Toilet[4];
+    		int j;
+    		for (j = 0; j < 4; j++)
+    		{
+    			mas_toil[j] = new Toilet();
+    		}
+			mas_toil[0].Set_parametrs_toil(0, 0, 0, 0, 0, 0);
+			mas_toil[1].Set_parametrs_toil(0, 0, 0, 60, 0, 0);
+			mas_toil[2].Set_parametrs_toil(0, 0, 0, 0, 0, 0);
+			mas_toil[3].Set_parametrs_toil(0, 0, 0, 0, 0, 0);
+    		int i;
+    		for (i=0;i<4;i++)
+    		{
+    			mas_toil[i].Set_air_temp_toil((i+1)*10);
+    			System.out.println("Температура туалета №" + (i+1) + " = " + mas_toil[i].Get_air_temp_toil());
+    		}
+    		
+    		System.out.println("\n7) Продемонстрировать возврат целочисленного значения из метода через вспомогательный класс");
+    		System.out.println("===========================================================================================");
+    		System.out.println("На примере объектов класса Parametrs и Toilet");
+    		
+    		Parametrs par1 = new Parametrs();
+    		par1 = mas_toil[1].GetParam();
+    		System.out.println("Целое значение яркости света: " + par1.Get_brightness());
+        } while (f_menu_rooms == 1);
+    }
+	}
