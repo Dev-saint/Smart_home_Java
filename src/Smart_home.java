@@ -554,6 +554,23 @@ public class Smart_home {
     		
     		// Печать в обратном порядке значений элементов списка:
     		mas_par[3].reprint();
+    		
+    		System.out.println("\n9) Продемонстрировать обработку строк (String)");
+    		System.out.println("===========================================================================================");
+    		System.out.println("На примере строк Troitskiy и Prog, сравнение строк и сложение\n");
+    		
+    		String Troitskiy = new String();
+    		Troitskiy = "Извините, ";
+    		String Prog = new String();
+    		Prog = "что так поздно сдаю лабы:(";
+    		
+    		if (Troitskiy.equals(Prog))
+    			System.out.println("\nСтроки равны!");
+    		else
+    		{
+    			Troitskiy = Troitskiy + Prog;
+    			System.out.println(Troitskiy + "\n");
+    		}
         } while (f_menu_rooms == 1);
     }
 	}
