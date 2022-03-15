@@ -527,6 +527,33 @@ public class Smart_home {
     		Parametrs par1 = new Parametrs();
     		par1 = mas_toil[1].GetParam();
     		System.out.println("Целое значение яркости света: " + par1.Get_brightness());
+    		
+    		System.out.println("\n8) Продемонстрировать разумное использование оператора this");
+    		System.out.println("===========================================================================================");
+    		System.out.println("На примере класса Параметры");
+    		
+    		// Задание полей температуры объектов класса Parametrs:
+    		Parametrs[] mas_par = new Parametrs[4];
+    		for (j = 0; j < 4; j++)
+    		{
+    			mas_par[j] = new Parametrs();
+    		}
+    		
+    		mas_par[0].Set_vent_speed(1);
+    		mas_par[1].Set_vent_speed(2);
+    		mas_par[2].Set_vent_speed(3);
+    		mas_par[3].Set_vent_speed(4);
+    		
+    		mas_par[0].NewList();
+
+    		// Вызов статической компанентной функции:
+    		mas_par[3].reprint();
+    		
+    		// Включение созданных компанентов в двусвязанный список:
+    		mas_par[0].Add(); mas_par[1].Add(); mas_par[2].Add(); mas_par[3].Add();
+    		
+    		// Печать в обратном порядке значений элементов списка:
+    		mas_par[3].reprint();
         } while (f_menu_rooms == 1);
     }
 	}

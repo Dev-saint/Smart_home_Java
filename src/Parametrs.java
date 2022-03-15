@@ -7,6 +7,10 @@ public class Parametrs {
 	private int light; // Включение/выключение света
 	private int vent_speed; // Скорость вентиляции
 
+	private static Parametrs lastPar;
+	private Parametrs prev;
+	private Parametrs next;
+
 	public Parametrs() {
 		air_temp = 0;
 		air_hum = 0;
@@ -75,4 +79,43 @@ public class Parametrs {
 		this.light = l;
 		this.vent_speed = speed;
 	}
+
+	// Новый список
+	public void NewList() {
+		lastPar = null;
+	}
+
+	// Добавление элемента в конец списка
+	public void Add() {
+		if (lastPar == null)
+			this.prev = null;
+		else {
+			lastPar.next = this;
+			prev = lastPar;
+		}
+		lastPar = this;
+		this.next = null;
+	}
+
+	// Вывод на дисплей содержимого списка
+	public void reprint()
+	{
+		   	Parametrs uk;   // Вспомогательная ссылка
+		    uk = lastPar;
+		    if (uk == null) 
+		    { 
+		    	System.out.println("Список пуст!"); 
+		        return;
+		    }
+		    else 
+		    	System.out.println("\nСодержимое списка:\n");
+		 // Цикл печати в обратном порядке значений элементов списка:
+		    while (uk != null)
+		    {
+		    	System.out.println(uk.vent_speed + "\t");
+		        uk = uk.prev;
+		    }
+		    System.out.println("\n");
+	}
+
 }
