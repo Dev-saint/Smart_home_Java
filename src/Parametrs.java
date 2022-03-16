@@ -108,14 +108,13 @@ public class Parametrs {
 		        return;
 		    }
 		    else 
-		    	System.out.println("\nСодержимое списка:\n");
+		    	System.out.println("\nСодержимое списка:");
 		 // Цикл печати в обратном порядке значений элементов списка:
 		    while (uk != null)
 		    {
 		    	System.out.println(uk.vent_speed + "\t");
 		        uk = uk.prev;
 		    }
-		    System.out.println("\n");
 	}
 
 }

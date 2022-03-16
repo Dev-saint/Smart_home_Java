@@ -532,13 +532,13 @@ public class Smart_home {
     		System.out.println("===========================================================================================");
     		System.out.println("На примере класса Параметры");
     		
-    		// Задание полей температуры объектов класса Parametrs:
     		Parametrs[] mas_par = new Parametrs[4];
     		for (j = 0; j < 4; j++)
     		{
     			mas_par[j] = new Parametrs();
     		}
     		
+    		// Задание полей скорости вентиляции объектов класса Parametrs:
     		mas_par[0].Set_vent_speed(1);
     		mas_par[1].Set_vent_speed(2);
     		mas_par[2].Set_vent_speed(3);
@@ -571,6 +571,37 @@ public class Smart_home {
     			Troitskiy = Troitskiy + Prog;
     			System.out.println(Troitskiy + "\n");
     		}
+    		
+    		System.out.println("\n\nЛабораторная работа 8:");
+    		System.out.println("\n========================================");
+    		System.out.println("Модифицировать ваши проекты на С++, C# и Java путем добавления в один из классов\n" +
+                "как минимум одного статического поля и одного статического метода.");
+    		System.out.println("========================================\n");
+    		System.out.println("(Использовались статистический член класса \'Toilet\' \'lastToil\' и\n" +
+                "статистические методы класса \'NewList\' и \'reprint\')\n");
+    		
+    		// Задание полей скорости вентиляции объектов класса Parametrs:
+    		mas_par[0].Set_vent_speed(1);
+    		mas_par[1].Set_vent_speed(2);
+    		mas_par[2].Set_vent_speed(3);
+    		mas_par[3].Set_vent_speed(4);
+    		
+    		System.out.println("Вызов статической компанентной функции: \'Новый список\'\n");
+    		mas_par[0].NewList();
+
+    		System.out.println("Вызов статической компанентной функции: \'Напечатать список\'\n");
+    		// Вызов статической компанентной функции:
+    		mas_par[3].reprint();
+    		
+    		System.out.println("Добавление элементов в список.\n");
+    		// Включение созданных компанентов в двусвязанный список:
+    		mas_par[0].Add(); mas_par[1].Add(); mas_par[2].Add(); mas_par[3].Add();
+    		
+    		System.out.println("Вызов статической компанентной функции: \'Новый список\'\n");
+    		System.out.println("========================================");
+    		// Печать в обратном порядке значений элементов списка:
+    		mas_par[3].reprint();
+    		System.out.println("\n========================================\n");
         } while (f_menu_rooms == 1);
     }
 	}
