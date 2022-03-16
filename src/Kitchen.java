@@ -131,7 +131,7 @@ public class Kitchen {
 	            String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
 	            Scanner in = new Scanner(System.in, consoleEncoding);
 	        	
-	            System.out.println("\n1. Температура воздуха\n"
+	            System.out.println("1. Температура воздуха\n"
 	                + "2. Влажность воздуха\n"
 	                + "3. Концентрация CO2\n"
 	                + "4. Яркость света\n"

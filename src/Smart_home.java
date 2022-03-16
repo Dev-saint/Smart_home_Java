@@ -572,7 +572,7 @@ public class Smart_home {
     			System.out.println(Troitskiy + "\n");
     		}
     		
-    		System.out.println("\n\nЛабораторная работа 8:");
+    		System.out.println("\nЛабораторная работа 8:");
     		System.out.println("\n========================================");
     		System.out.println("Модифицировать ваши проекты на С++, C# и Java путем добавления в один из классов\n" +
                 "как минимум одного статического поля и одного статического метода.");

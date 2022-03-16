@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Parametrs {
 	private double air_temp; // Температура воздуха
@@ -79,6 +80,21 @@ public class Parametrs {
 		this.light = l;
 		this.vent_speed = speed;
 	}
+	
+	//Вывод параметров на экран
+    public void Display()
+    {
+    	String os = System.getProperty("os.name");
+        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+        Scanner in = new Scanner(System.in, consoleEncoding);
+
+        System.out.println("\nТемература воздуха в туалете: " + air_temp + " °С");
+        System.out.println("Влажность воздуха в туалете: " + air_hum + " %");
+        System.out.println("Концентрация CO2 в туалете: " + conc_co2 + " %");
+        System.out.println("Яркость света в туалете: " + brightness + " %");
+        System.out.println("Флажок света в туалете: " + light);
+        System.out.println("Скорость вентиляции в туалете: " + vent_speed + " %");
+    }
 
 	// Новый список
 	public void NewList() {
