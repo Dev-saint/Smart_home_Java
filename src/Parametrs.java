@@ -12,6 +12,7 @@ public class Parametrs {
 	private Parametrs prev;
 	private Parametrs next;
 
+	// Конструктор
 	public Parametrs() {
 		air_temp = 0;
 		air_hum = 0;
@@ -19,6 +20,26 @@ public class Parametrs {
 		brightness = 0;
 		light = 0;
 		vent_speed = 0;
+	}
+
+	// Конструктор с одним параметром
+	public Parametrs(double temp) {
+		air_temp = temp;
+		air_hum = 0;
+		conc_co2 = 0;
+		brightness = 0;
+		light = 0;
+		vent_speed = 0;
+	}
+
+	// Конструктор с параметрами
+	public Parametrs(double temp, double hum, double co2, int bright, int l, int speed) {
+		air_temp = temp;
+		air_hum = hum;
+		conc_co2 = co2;
+		brightness = bright;
+		light = l;
+		vent_speed = speed;
 	}
 
 	// Функции получения данных из полей
@@ -80,21 +101,20 @@ public class Parametrs {
 		this.light = l;
 		this.vent_speed = speed;
 	}
-	
-	//Вывод параметров на экран
-    public void Display()
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
 
-        System.out.println("\nТемература воздуха в туалете: " + air_temp + " °С");
-        System.out.println("Влажность воздуха в туалете: " + air_hum + " %");
-        System.out.println("Концентрация CO2 в туалете: " + conc_co2 + " %");
-        System.out.println("Яркость света в туалете: " + brightness + " %");
-        System.out.println("Флажок света в туалете: " + light);
-        System.out.println("Скорость вентиляции в туалете: " + vent_speed + " %");
-    }
+	// Вывод параметров на экран
+	public void Display() {
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		System.out.println("\nТемература воздуха в туалете: " + air_temp + " °С");
+		System.out.println("Влажность воздуха в туалете: " + air_hum + " %");
+		System.out.println("Концентрация CO2 в туалете: " + conc_co2 + " %");
+		System.out.println("Яркость света в туалете: " + brightness + " %");
+		System.out.println("Флажок света в туалете: " + light);
+		System.out.println("Скорость вентиляции в туалете: " + vent_speed + " %");
+	}
 
 	// Новый список
 	public void NewList() {
@@ -114,23 +134,18 @@ public class Parametrs {
 	}
 
 	// Вывод на дисплей содержимого списка
-	public void reprint()
-	{
-		   	Parametrs uk;   // Вспомогательная ссылка
-		    uk = lastPar;
-		    if (uk == null) 
-		    { 
-		    	System.out.println("Список пуст!"); 
-		        return;
-		    }
-		    else 
-		    	System.out.println("\nСодержимое списка:");
-		 // Цикл печати в обратном порядке значений элементов списка:
-		    while (uk != null)
-		    {
-		    	System.out.println(uk.vent_speed + "\t");
-		        uk = uk.prev;
-		    }
+	public void reprint() {
+		Parametrs uk; // Вспомогательная ссылка
+		uk = lastPar;
+		if (uk == null) {
+			System.out.println("Список пуст!");
+			return;
+		} else
+			System.out.println("\nСодержимое списка:");
+		// Цикл печати в обратном порядке значений элементов списка:
+		while (uk != null) {
+			System.out.println(uk.vent_speed + "\t");
+			uk = uk.prev;
+		}
 	}
-
 }

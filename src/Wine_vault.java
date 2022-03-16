@@ -3,112 +3,103 @@ import java.util.Scanner;
 public class Wine_vault {
 	private Parametrs param_wine = new Parametrs();
 
-    //Конструктор
-    public Wine_vault()
-    {
-        this.param_wine.Set_parametrs(0, 0, 0, 0, 0, 0);
-    }
+	// Конструктор
+	public Wine_vault() {
+		this.param_wine.Set_parametrs(0, 0, 0, 0, 0, 0);
+	}
 
-    //Функции получения данных из полей
-    public double Get_air_temp_wine()
-    {
-        return this.param_wine.Get_air_temp();
-    }
+	// Конструктор с одним параметром
+	public Wine_vault(double temp) {
+		this.param_wine.Set_parametrs(temp, 0, 0, 0, 0, 0);
+	}
 
-    public double Get_air_hum_wine()
-    {
-        return this.param_wine.Get_air_hum();
-    }
+	// Конструктор с параметрами
+	public Wine_vault(double temp, double hum, double co2, int bright, int l, int speed) {
+		this.param_wine.Set_parametrs(temp, hum, co2, bright, l, speed);
+	}
 
-    public double Get_conc_co2_wine()
-    {
-        return this.param_wine.Get_conc_co2();
-    }
+	// Функции получения данных из полей
+	public double Get_air_temp_wine() {
+		return this.param_wine.Get_air_temp();
+	}
 
-    public int Get_brightness_wine()
-    {
-        return this.param_wine.Get_brightness();
-    }
+	public double Get_air_hum_wine() {
+		return this.param_wine.Get_air_hum();
+	}
 
-    public int Get_light_wine()
-    {
-        return this.param_wine.Get_light();
-    }
+	public double Get_conc_co2_wine() {
+		return this.param_wine.Get_conc_co2();
+	}
 
-    public int Get_vent_speed_wine()
-    {
-        return this.param_wine.Get_vent_speed();
-    }
+	public int Get_brightness_wine() {
+		return this.param_wine.Get_brightness();
+	}
 
-    //Функции задания полей
-    public void Set_air_temp_wine(double temp)
-    {
-        this.param_wine.Set_air_temp(temp);
-    }
+	public int Get_light_wine() {
+		return this.param_wine.Get_light();
+	}
 
-    public void Set_air_hum_wine(double hum)
-    {
-        this.param_wine.Set_air_hum(hum);
-    }
+	public int Get_vent_speed_wine() {
+		return this.param_wine.Get_vent_speed();
+	}
 
-    public void Set_conc_co2_wine(double co2)
-    {
-        this.param_wine.Set_conc_co2(co2);
-    }
+	// Функции задания полей
+	public void Set_air_temp_wine(double temp) {
+		this.param_wine.Set_air_temp(temp);
+	}
 
-    public void Set_brightness_wine(int bright)
-    {
-        this.param_wine.Set_brightness(bright);
-    }
+	public void Set_air_hum_wine(double hum) {
+		this.param_wine.Set_air_hum(hum);
+	}
 
-    public void Set_light_wine(int l)
-    {
-        this.param_wine.Set_light(l);
-    }
+	public void Set_conc_co2_wine(double co2) {
+		this.param_wine.Set_conc_co2(co2);
+	}
 
-    public void Set_vent_speed_wine(int speed)
-    {
-        this.param_wine.Set_vent_speed(speed);
-    }
+	public void Set_brightness_wine(int bright) {
+		this.param_wine.Set_brightness(bright);
+	}
 
-    //Задание полей класса винный погреб
-    public void Set_parametrs_wine(double temp, double hum, double co2, int bright, int l, int speed)
-    {
-        this.param_wine.Set_air_temp(temp);
-        this.param_wine.Set_air_hum(hum);
-        this.param_wine.Set_conc_co2(co2);
-        this.param_wine.Set_brightness(bright);
-        this.param_wine.Set_light(l);
-        this.param_wine.Set_vent_speed(speed);
-    }
+	public void Set_light_wine(int l) {
+		this.param_wine.Set_light(l);
+	}
 
-    //Вывод параметров винного погреба на экран
-    public void DisplayWine()
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
-    	
-        System.out.println("\nТемература воздуха в винном погребе: " + this.Get_air_temp_wine() + " °С");
-        System.out.println("Влажность воздуха в винном погребе: " + this.Get_air_hum_wine() + " %");
-        System.out.println("Концентрация CO2 в винном погребе: " + this.Get_conc_co2_wine() + " %");
-        System.out.println("Яркость света в винном погребе: " + this.Get_brightness_wine() + " %");
-        System.out.println("Флажок света в винном погребе: " + this.Get_light_wine());
-        System.out.println("Скорость вентиляции в винном погребе: " + this.Get_vent_speed_wine() + " %");
-    }
+	public void Set_vent_speed_wine(int speed) {
+		this.param_wine.Set_vent_speed(speed);
+	}
 
-    public void menu_wine() // Функция вызова меню параметров для винного погреба
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
-    	
-        System.out.println("1. Температура воздуха\n"
-            + "2. Влажность воздуха\n"
-            + "3. Концентрация CO2\n"
-            + "4. Яркость света\n"
-            + "5. Включение/выключение света\n"
-            + "6. Скорость вентиляции\n"
-            + "Выбранный пункт: ");
-    }
+	// Задание полей класса винный погреб
+	public void Set_parametrs_wine(double temp, double hum, double co2, int bright, int l, int speed) {
+		this.param_wine.Set_air_temp(temp);
+		this.param_wine.Set_air_hum(hum);
+		this.param_wine.Set_conc_co2(co2);
+		this.param_wine.Set_brightness(bright);
+		this.param_wine.Set_light(l);
+		this.param_wine.Set_vent_speed(speed);
+	}
+
+	// Вывод параметров винного погреба на экран
+	public void DisplayWine() {
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		System.out.println("\nТемература воздуха в винном погребе: " + this.Get_air_temp_wine() + " °С");
+		System.out.println("Влажность воздуха в винном погребе: " + this.Get_air_hum_wine() + " %");
+		System.out.println("Концентрация CO2 в винном погребе: " + this.Get_conc_co2_wine() + " %");
+		System.out.println("Яркость света в винном погребе: " + this.Get_brightness_wine() + " %");
+		System.out.println("Флажок света в винном погребе: " + this.Get_light_wine());
+		System.out.println("Скорость вентиляции в винном погребе: " + this.Get_vent_speed_wine() + " %");
+	}
+
+	public void menu_wine() // Функция вызова меню параметров для винного погреба
+	{
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		System.out.println(
+				"1. Температура воздуха\n" + "2. Влажность воздуха\n" + "3. Концентрация CO2\n" + "4. Яркость света\n"
+						+ "5. Включение/выключение света\n" + "6. Скорость вентиляции\n" + "Выбранный пункт: ");
+	}
 }

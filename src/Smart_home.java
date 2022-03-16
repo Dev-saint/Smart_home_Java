@@ -602,6 +602,95 @@ public class Smart_home {
     		// Печать в обратном порядке значений элементов списка:
     		mas_par[3].reprint();
     		System.out.println("\n========================================\n");
+    		
+    		Parametrs param1 = new Parametrs();
+    		Parametrs param2 = new Parametrs(20);
+    		Parametrs param3 = new Parametrs(20,45,10,30,0,15);
+    		
+    		System.out.println("Лабораторная 9\n");
+    		System.out.println("Конструкторы класса Параметры:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		param1.Display();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		param2.Display();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		param3.Display();
+    		System.out.println("\n\n");
+
+    		Toilet toil1 = new Toilet();
+    		Toilet toil2 = new Toilet(20);
+    		Toilet toil3 = new Toilet(20,45,10,30,0,15);
+    		
+    		System.out.println("Конструкторы класса Туалет:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		toil1.DisplayToil();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		toil2.DisplayToil();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		toil3.DisplayToil();
+    		System.out.println("\n\n");
+    		
+    		Kitchen kitch1 = new Kitchen();
+    		Kitchen kitch2 = new Kitchen(20);
+    		Kitchen kitch3 = new Kitchen(20,45,10,30,0,15,0);
+    		
+    		System.out.println("Конструкторы класса Кухня:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		kitch1.DisplayKitch();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		kitch2.DisplayKitch();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		kitch3.DisplayKitch();
+    		System.out.println("\n\n");
+    		
+    		Bedroom bed1 = new Bedroom();
+    		Bedroom bed2 = new Bedroom(20);
+    		Bedroom bed3 = new Bedroom(20,45,10,30,0,15);
+    		
+    		System.out.println("Конструкторы класса Спальня:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		bed1.DisplayBed();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		bed2.DisplayBed();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		bed3.DisplayBed();
+    		System.out.println("\n\n");
+    		
+    		Bathroom bath1 = new Bathroom();
+    		Bathroom bath2 = new Bathroom(20);
+    		Bathroom bath3 = new Bathroom(20,45,10,30,0,15,0);
+    		
+    		System.out.println("Конструкторы класса Ванная:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		bath1.DisplayBath();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		bath2.DisplayBath();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		bath3.DisplayBath();
+    		System.out.println("\n\n");
+    		
+    		Wine_vault wine1 = new Wine_vault();
+    		Wine_vault wine2 = new Wine_vault(20);
+    		Wine_vault wine3 = new Wine_vault(20,45,10,30,0,15);
+    		
+    		System.out.println("Конструкторы класса Винный погреб:");
+    		System.out.println("\n1) Конструктор без параметров:");
+    		wine1.DisplayWine();
+    		System.out.println("\n2) Конструктор с 1-им параметром:");
+    		wine2.DisplayWine();
+    		System.out.println("\n3) Конструктор с параметрами:");
+    		wine3.DisplayWine();
+    		System.out.println("\n\n");
+    		
+    		Toilet[] toilArr = new Toilet[3];
+    		for (j = 0; j < 3; j++)
+    			toilArr[j] = new Toilet(20+j);
+    		System.out.println("Инициализировать небольшой массив конструктором с одним параметром:");
+    		for (j = 0; j < 3; j++)
+    			toilArr[j].DisplayToil();
+    		System.out.println("\n\n");
+
+    		
         } while (f_menu_rooms == 1);
     }
 	}

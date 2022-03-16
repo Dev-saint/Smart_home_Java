@@ -2,142 +2,131 @@ import java.util.Scanner;
 import java.lang.*;
 
 public class Bathroom {
-	private int flag_water; //Флаг набора воды
-    private Parametrs param_bath = new Parametrs();
+	private int flag_water; // Флаг набора воды
+	private Parametrs param_bath = new Parametrs();
 
-    //Конструктор
-    public Bathroom()
-    {
-        this.param_bath.Set_parametrs(0, 0, 0, 0, 0, 0);
-        this.flag_water = 0;
-    }
+	// Конструктор
+	public Bathroom() {
+		this.param_bath.Set_parametrs(0, 0, 0, 0, 0, 0);
+		this.flag_water = 0;
+	}
 
-    //Функции получения данных из полей
-    public double Get_air_temp_bath()
-    {
-        return this.param_bath.Get_air_temp();
-    }
+	// Конструктор с одним параметром
+	public Bathroom(double temp) {
+		this.param_bath.Set_parametrs(temp, 0, 0, 0, 0, 0);
+		this.flag_water = 0;
+	}
 
-    public double Get_air_hum_bath()
-    {
-        return this.param_bath.Get_air_hum();
-    }
+	// Конструктор с параметрами
+	public Bathroom(double temp, double hum, double co2, int bright, int l, int speed, int water) {
+		this.param_bath.Set_parametrs(temp, hum, co2, bright, l, speed);
+		this.flag_water = water;
+	}
 
-    public double Get_conc_co2_bath()
-    {
-        return this.param_bath.Get_conc_co2();
-    }
+	// Функции получения данных из полей
+	public double Get_air_temp_bath() {
+		return this.param_bath.Get_air_temp();
+	}
 
-    public int Get_brightness_bath()
-    {
-        return this.param_bath.Get_brightness();
-    }
+	public double Get_air_hum_bath() {
+		return this.param_bath.Get_air_hum();
+	}
 
-    public int Get_light_bath()
-    {
-        return this.param_bath.Get_light();
-    }
+	public double Get_conc_co2_bath() {
+		return this.param_bath.Get_conc_co2();
+	}
 
-    public int Get_vent_speed_bath()
-    {
-        return this.param_bath.Get_vent_speed();
-    }
+	public int Get_brightness_bath() {
+		return this.param_bath.Get_brightness();
+	}
 
-    public int Get_flag_water()
-    {
-        return this.Get_flag_water();
-    }
+	public int Get_light_bath() {
+		return this.param_bath.Get_light();
+	}
 
-    //Функции задания полей
-    public void Set_air_temp_bath(double temp)
-    {
-        this.param_bath.Set_air_temp(temp);
-    }
+	public int Get_vent_speed_bath() {
+		return this.param_bath.Get_vent_speed();
+	}
 
-    public void Set_air_hum_bath(double hum)
-    {
-        this.param_bath.Set_air_hum(hum);
-    }
+	public int Get_flag_water() {
+		return this.Get_flag_water();
+	}
 
-    public void Set_conc_co2_bath(double co2)
-    {
-        this.param_bath.Set_conc_co2(co2);
-    }
+	// Функции задания полей
+	public void Set_air_temp_bath(double temp) {
+		this.param_bath.Set_air_temp(temp);
+	}
 
-    public void Set_brightness_bath(int bright)
-    {
-        this.param_bath.Set_brightness(bright);
-    }
+	public void Set_air_hum_bath(double hum) {
+		this.param_bath.Set_air_hum(hum);
+	}
 
-    public void Set_light_bath(int l)
-    {
-        this.param_bath.Set_light(l);
-    }
+	public void Set_conc_co2_bath(double co2) {
+		this.param_bath.Set_conc_co2(co2);
+	}
 
-    public void Set_vent_speed_bath(int speed)
-    {
-        this.param_bath.Set_vent_speed(speed);
-    }
+	public void Set_brightness_bath(int bright) {
+		this.param_bath.Set_brightness(bright);
+	}
 
-    public void Set_flag_water(int water)
-    {
-        this.flag_water = water;
-    }
+	public void Set_light_bath(int l) {
+		this.param_bath.Set_light(l);
+	}
 
-    //Задание полей класса ванная
-    public void Set_parametrs_bath(double temp, double hum, double co2, int bright, int l, int speed, int water)
-    {
-        this.param_bath.Set_air_temp(temp);
-        this.param_bath.Set_air_hum(hum);
-        this.param_bath.Set_conc_co2(co2);
-        this.param_bath.Set_brightness(bright);
-        this.param_bath.Set_light(l);
-        this.param_bath.Set_vent_speed(speed);
-        this.flag_water = water;
-    }
+	public void Set_vent_speed_bath(int speed) {
+		this.param_bath.Set_vent_speed(speed);
+	}
 
-    //Вывод параметров ванной на экран
-    public void DisplayBath()
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
-    	
-        System.out.println("\nТемература воздуха в ванной: " + this.Get_air_temp_bath() + " °С");
-        System.out.println("Влажность воздуха в ванной: " + this.Get_air_hum_bath() + " %");
-        System.out.println("Концентрация CO2 в ванной: " + this.Get_conc_co2_bath() + " %");
-        System.out.println("Яркость света в ванной: " + this.Get_brightness_bath() + " %");
-        System.out.println("Флажок света в ванной: " + this.Get_light_bath());
-        System.out.println("Скорость вентиляции в ванной: " + this.Get_vent_speed_bath() + " %");
-    }
+	public void Set_flag_water(int water) {
+		this.flag_water = water;
+	}
 
-    public void water_bath() throws InterruptedException   //Функция набора воды в ванную
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
-    	
-        if (this.flag_water == 1)
-        {
-        	System.out.println("Включен набор воды в ванную...");
-            Thread.sleep(5000);
-            System.out.println("Вода набрана!");
-        }
-    }
+	// Задание полей класса ванная
+	public void Set_parametrs_bath(double temp, double hum, double co2, int bright, int l, int speed, int water) {
+		this.param_bath.Set_air_temp(temp);
+		this.param_bath.Set_air_hum(hum);
+		this.param_bath.Set_conc_co2(co2);
+		this.param_bath.Set_brightness(bright);
+		this.param_bath.Set_light(l);
+		this.param_bath.Set_vent_speed(speed);
+		this.flag_water = water;
+	}
 
-    public void menu_bath() // Функция вызова меню параметров для ванной
-    {
-    	String os = System.getProperty("os.name");
-        String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
-        Scanner in = new Scanner(System.in, consoleEncoding);
-    	
-    	System.out.println("1. Температура воздуха\n"
-            + "2. Влажность воздуха\n"
-            + "3. Концентрация CO2\n"
-            + "4. Яркость света\n"
-            + "5. Включение/выключение света\n"
-            + "6. Скорость вентиляции\n"
-            + "7. Набор воды в ванную\n"
-            + "Выбранный пункт: ");
-    }
+	// Вывод параметров ванной на экран
+	public void DisplayBath() {
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		System.out.println("\nТемература воздуха в ванной: " + this.Get_air_temp_bath() + " °С");
+		System.out.println("Влажность воздуха в ванной: " + this.Get_air_hum_bath() + " %");
+		System.out.println("Концентрация CO2 в ванной: " + this.Get_conc_co2_bath() + " %");
+		System.out.println("Яркость света в ванной: " + this.Get_brightness_bath() + " %");
+		System.out.println("Флажок света в ванной: " + this.Get_light_bath());
+		System.out.println("Скорость вентиляции в ванной: " + this.Get_vent_speed_bath() + " %");
+	}
+
+	public void water_bath() throws InterruptedException // Функция набора воды в ванную
+	{
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		if (this.flag_water == 1) {
+			System.out.println("Включен набор воды в ванную...");
+			Thread.sleep(5000);
+			System.out.println("Вода набрана!");
+		}
+	}
+
+	public void menu_bath() // Функция вызова меню параметров для ванной
+	{
+		String os = System.getProperty("os.name");
+		String consoleEncoding = System.getProperty("console.encoding", os.startsWith("Windows") ? "cp866" : "utf-8");
+		Scanner in = new Scanner(System.in, consoleEncoding);
+
+		System.out.println("1. Температура воздуха\n" + "2. Влажность воздуха\n" + "3. Концентрация CO2\n"
+				+ "4. Яркость света\n" + "5. Включение/выключение света\n" + "6. Скорость вентиляции\n"
+				+ "7. Набор воды в ванную\n" + "Выбранный пункт: ");
+	}
 }
