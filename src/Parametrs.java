@@ -12,6 +12,26 @@ public class Parametrs {
 	private Parametrs prev;
 	private Parametrs next;
 
+	// Проверка числа на подходящее для температуры
+    public boolean IsRightTemp(double temp)
+    {
+        boolean res = true;
+        try                                                    // ищем исключения внутри этого блока и отправляем их в соответствующий обработчик catch
+        {
+            if (temp < -20 || temp > 40)                          // Если пользователь ввел неверное число, то выбрасывается исключение
+                throw new Exception("Incorrect value.");       // выбрасывается исключение типа const char*
+            return res;
+        }
+        catch (Exception ex)           						   // обработчик исключений типа const char*
+        {
+        	System.out.println("Error: " + ex.getMessage() + '\n');
+            res = false;
+            return res;
+        }
+        //return res;
+    }
+
+	
 	// Конструктор
 	public Parametrs() {
 		air_temp = 0;
@@ -24,7 +44,8 @@ public class Parametrs {
 
 	// Конструктор с одним параметром
 	public Parametrs(double temp) {
-		air_temp = temp;
+		if (IsRightTemp(temp))
+			air_temp = temp;
 		air_hum = 0;
 		conc_co2 = 0;
 		brightness = 0;
@@ -34,7 +55,8 @@ public class Parametrs {
 
 	// Конструктор с параметрами
 	public Parametrs(double temp, double hum, double co2, int bright, int l, int speed) {
-		air_temp = temp;
+		if (IsRightTemp(temp))
+			air_temp = temp;
 		air_hum = hum;
 		conc_co2 = co2;
 		brightness = bright;
@@ -69,7 +91,8 @@ public class Parametrs {
 
 	// Функции задания полей
 	public void Set_air_temp(double temp) {
-		this.air_temp = temp;
+		if (IsRightTemp(temp))
+			air_temp = temp;
 	}
 
 	public void Set_air_hum(double hum) {
@@ -94,7 +117,8 @@ public class Parametrs {
 
 	// Задание полей класса Параметры
 	public void Set_parametrs(double temp, double hum, double co2, int bright, int l, int speed) {
-		this.air_temp = temp;
+		if (IsRightTemp(temp))
+			air_temp = temp;
 		this.air_hum = hum;
 		this.conc_co2 = co2;
 		this.brightness = bright;
