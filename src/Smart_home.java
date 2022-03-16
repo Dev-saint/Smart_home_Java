@@ -568,6 +568,39 @@ public class Smart_home {
 
 			System.out.println("Введенная температура: " + param_try.Get_air_temp());
 
+			Toilet[] toilArr_1 = new Toilet[3]; Toilet [][] toilArr_2 = new Toilet[2][2];
+
+			toilArr_1[0] = new Toilet();
+			toilArr_1[1] = new Toilet();
+			toilArr_1[2] = new Toilet();
+
+			for (i = 0; i < 3; i++)
+				toilArr_1[i].Set_parametrs_toil(20 + j, 10 - j, 10 + j, 10 * j, 0, 80 / (j + 1));
+			
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+					toilArr_2[i][j] = new Toilet();
+
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+					toilArr_2[i][j].Set_parametrs_toil(20 + j, 10 - j, 10 + j, 10 * j, 0, 80 / (j + 1));
+			//=================================
+
+			// Вывод
+			//=================================
+			System.out.println("\nОдномерный массив размером [3]");
+			for (i = 0; i < 3; i++)
+				toilArr_1[i].DisplayToil();
+
+			System.out.println();
+
+			System.out.println("Двумерный массив размером [2][2]");
+			for (i = 0; i < 2; i++)
+				for (j = 0; j < 2; j++)
+					toilArr_2[i][j].DisplayToil();
+			//=================================
+
+			
 		} while (f_menu_rooms == 1);
 	}
 }
